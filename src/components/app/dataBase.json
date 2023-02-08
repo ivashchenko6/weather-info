@@ -1,0 +1,79 @@
+{
+    "countries" : [
+        {
+            "name": "Kyiv",
+            "lat": "50.4",
+            "lon": "30.5"
+        },
+        {
+            "name": "Moscow",
+            "lat": "55.75",
+            "lon": "37.61"
+        },
+        {
+            "name": "Minsk",
+            "lat": "53.89",
+            "lon": "27.56"
+        },
+        {
+            "name": "Frankfurt",
+            "lat": "50.11",
+            "lon": "8.68"
+        },
+        {
+            "name": "Paris",
+            "lat": "48.86",
+            "lon": "2.34"
+        },
+        {
+            "name": "Warsaw",
+            "lat": "52.2",
+            "lon": "21.0"
+        },
+        {
+            "name": "Salzburg",
+            "lat": "47.81",
+            "lon": "13.03"
+        },
+        {
+            "name": "Madrid",
+            "lat": "40.41",
+            "lon": "-3.7"
+        },
+        {
+            "name": "Los Angeles",
+            "lat": "34.05",
+            "lon": "-118.24"
+        },
+        {
+            "name": "Dublin",
+            "lat": "53.34",
+            "lon": "-6.26"
+        },
+        {
+            "name": "Barcelona",
+            "lat": "41.39",
+            "lon": "2.15"
+        },
+        {
+            "name": "Kharkiv",
+            "lat": "49.98",
+            "lon": "36.23"
+        },
+        {
+            "name": "Big Bear",
+            "lat": "34.24",
+            "lon": "-116.91"
+        },
+        {
+            "name": "Perm",
+            "lat": "58.00",
+            "lon": "56.31"
+        },
+        {
+            "name": "Krakow",
+            "lat": "50.04",
+            "lon": "19.94"
+        }
+    ]
+}

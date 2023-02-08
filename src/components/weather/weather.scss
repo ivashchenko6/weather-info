@@ -1,0 +1,18 @@
+.city-weather-block {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    
+    .main-info {
+
+        width: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .img-city {
+            display: flex;
+            align-items: center;
+        }
+    
+        
+    }
+}
