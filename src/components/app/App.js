@@ -13,11 +13,12 @@ import Page404 from '../pages/Page404';
 
 
 import useHttp from '../hook/useHttp';
+import Spinner from '../spinner/Spinner';
 
 
 const App = () => {
     const countriesDB = [...dataBase.countries];
-    const {request, clearError, loading, error} = useHttp();
+    const {request, loading, error, clearError} = useHttp();
     const [data, setData] = useState([]); //data of each city with name, latitude, longitude
     const [city, setCity] = useState('');
 
@@ -38,7 +39,7 @@ const App = () => {
     }
 
     const downloadWeathers =async () => {
-        const items = [...dataBase.countries].map(async (item) => {
+        const items = countriesDB.map(async (item) => {
             const response = await request(item.lat, item.lon);
             return transformCorrectData(response);
         })
@@ -58,6 +59,11 @@ const App = () => {
         }
     } 
 
+    const errorMessage = null;
+    const spinner = loading ? <Spinner /> : null;
+    const items = !(loading && error) ? <View showByTerm={showByTerm} data={data} city={city} /> : null
+
+
 
     return (
         <div className="app">
@@ -65,14 +71,24 @@ const App = () => {
                 <InputCity city={city} changeCity={changeCity}/>
             </ErrorBoundary>
             <ErrorBoundary>
-                <Routes>
-                    <Route path='/' element={<CitiesList data={showByTerm(data, city)}/>} />
-                    <Route path='*' element={<Page404 />} />
-                </Routes>
+                {errorMessage}
+                {spinner}
+                {items}
                 <Outlet/>
             </ErrorBoundary>
         </div>
     )
 }
+
+const View = ({showByTerm, data, city}) => {
+    return (
+        <Routes>
+            <Route path='/' element={<CitiesList data={showByTerm(data, city)}/>} />
+            <Route path='*' element={<Page404 />} />
+            
+        </Routes>
+    )
+}
+
 
 export default App;
