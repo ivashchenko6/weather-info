@@ -1,9 +1,7 @@
-import {useState, useEffect} from 'react';
-import { useParams, Link } from "react-router-dom";
+import {useEffect} from 'react';
+
 
 import Spinner from '../spinner/Spinner'
-import useWeatherService from "../../service/WeatherService";
-
 
 import clearSky from '../../images/weatherState/clearSky.png';
 import fewClouds from '../../images/weatherState/fewClouds.png';
@@ -15,33 +13,26 @@ import thunderstorm from '../../images/weatherState/thunderstorm.png';
 import snow from '../../images/weatherState/snow.png';
 import mist from '../../images/weatherState/mist.png';
 import questionMark  from '../../images/weatherState/question.png'
-import backBtn from '../../images/backButton.png'
+
 
 import './weather.scss';
+import useHttp from '../hook/useHttp';
 
 
-const Weather = ({data}) => {
-    const {city} = useParams();
-    const [weatherCity, setweatherCity] = useState(null);
-    const {lat, lon} = data.find(item => item.name.toLowerCase() === city)
+const WeatherCard = ({item}) => {
     
-    const {getWeather, loading, error, clearError} = useWeatherService();
+    const {loading, error, clearError} = useHttp();
     
     useEffect(() => {
-        updateWeather();
-    },[city])
-
-    const updateWeather = () => {
         clearError();
-        getWeather(lat, lon)
-            .then(loadedWeather)
-        
-    } 
-    const loadedWeather = (information) => setweatherCity(information);
+    },[])
+
+
+    
 
     const errorMessage = error ? <h1>Error</h1> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error || !weatherCity) ? <View city={weatherCity}/> : null; 
+    const content = !(loading || error) ? <View city={item}/> : null; 
 
     return (
         <>
@@ -55,10 +46,8 @@ const Weather = ({data}) => {
 
 const View = ({city}) => {
     let weatherState = '';
-    const {name, weather, country, id} = city;
+    const {name, weather,  id} = city;
 
-    
-    
     if(id >=200 && id <=232) {
         weatherState = thunderstorm;
     }else if(id >=300 && id <=321) {
@@ -82,20 +71,17 @@ const View = ({city}) => {
     }else {
         weatherState = questionMark;
     }
-    //Пофиксить когда к любой погоде добавляется одинаковая картинка showerRain!
+    
     
     return (
         <div className="city-weather-block">
-            <Link to='/'>
-                <img src={backBtn} alt="back button" />
-            </Link>
             <div className="main-info">
                 <div className='img-city'>
                     <img src={weatherState} alt={weather} />
                     <h2>{name}</h2>
                 </div>
                 
-                <div><p>Weather: {weather}</p>
+                <div><p className='weather-text'>Weather: {weather}</p>
                 </div>
             </div>
             
@@ -103,4 +89,4 @@ const View = ({city}) => {
     )
 }
 
-export default Weather;
+export default WeatherCard;

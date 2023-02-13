@@ -1,8 +1,13 @@
 .main-section {
     height: 700px;
-    width: 800px;
+    display: flex;
+    justify-content: center;
+    
     ul.cities-list {
-        
+        width: 1400px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap:wrap;
         
         list-style-type: none;
         

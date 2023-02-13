@@ -1,18 +1,28 @@
 .city-weather-block {
+    width: 300px;
+    height: 400px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
-    
+    flex-direction: column;
+    margin-bottom: 20px;
     .main-info {
 
-        width: 400px;
+        width: 300px;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
-        align-items: center;
+        
+        
         .img-city {
             display: flex;
             align-items: center;
         }
     
+        div {
+            p.weather-text {
+                margin-left: 20px;
+            }
+        }
         
     }
 }
