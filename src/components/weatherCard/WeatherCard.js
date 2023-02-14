@@ -46,7 +46,7 @@ const WeatherCard = ({item}) => {
 
 const View = ({city}) => {
     let weatherState = '';
-    const {name, weather,  id} = city;
+    const {name, weather,temperature, id} = city;
 
     if(id >=200 && id <=232) {
         weatherState = thunderstorm;
@@ -79,6 +79,7 @@ const View = ({city}) => {
                 <div className='img-city'>
                     <img src={weatherState} alt={weather} />
                     <h2>{name}</h2>
+                    <h1 className='temperature'>{temperature}°C</h1>
                 </div>
                 
                 <div><p className='weather-text'>Weather: {weather}</p>

@@ -11,7 +11,7 @@ import Page404 from '../pages/Page404';
 
 
 
-
+import errorGif from '../../images/error.gif'
 import useHttp from '../hook/useHttp';
 import Spinner from '../spinner/Spinner';
 
@@ -33,8 +33,8 @@ const App = () => {
         return {
             name: city.name,
             id: city.weather[0].id,
-            weather: city.weather[0].main,
-            
+            weather: city.weather[0].description[0].toUpperCase() + city.weather[0].description.slice(1),
+            temperature: Math.round(city.main.temp - 273.15)
         }
     }
 
@@ -59,7 +59,7 @@ const App = () => {
         }
     } 
 
-    const errorMessage = null;
+    const errorMessage = error ? <img src={errorGif} alt='error'/> : null;
     const spinner = loading ? <Spinner /> : null;
     const items = !(loading && error) ? <View showByTerm={showByTerm} data={data} city={city} /> : null
 
