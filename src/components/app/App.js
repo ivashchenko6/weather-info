@@ -25,6 +25,7 @@ const App = () => {
     
 
     useEffect(() => {
+        clearError();
         downloadWeathers();
     },[])
 
