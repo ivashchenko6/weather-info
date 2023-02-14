@@ -37,7 +37,7 @@ const App = () => {
             temperature: Math.round(city.main.temp - 273.15)
         }
     }
-
+    //
     const downloadWeathers =async () => {
         const items = countriesDB.map(async (item) => {
             const response = await request(item.lat, item.lon);
